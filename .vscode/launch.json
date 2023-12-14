@@ -163,6 +163,26 @@
             ],
             "program": "${workspaceFolder}\\src\\puzzles\\08\\08_02.js",
             "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 9 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\09\\09_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 9 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\09\\09_02.js",
+            "args": [],
         }
     ]
 }
