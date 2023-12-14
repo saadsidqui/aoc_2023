@@ -1,0 +1,26 @@
+{
+	"name": "gamba-bot",
+	"version": "0.1.0",
+	"author": "Saad Sidqui",
+	"private": true,
+	"type": "module",
+	"license": "MIT",
+	"scripts": {},
+	"dependencies": {
+		"@inquirer/prompts": "^3.3.0",
+		"chalk": "^5.3.0",
+		"eslint": "^8.55.0",
+		"lodash": "^4.17.21",
+		"voca": "^1.4.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sidquisaad/aoc_2023.git"
+	},
+	"imports": {
+		"#src/*": "./src/*"
+	},
+	"devDependencies": {
+		"@types/node": "^20.3.1"
+	}
+}

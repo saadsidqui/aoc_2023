@@ -1,0 +1,168 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.1.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 1 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\01\\01_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 1 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\01\\01_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 2 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\02\\02_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 2 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\02\\02_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 3 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\03\\03_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 3 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\03\\03_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 4 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\04\\04_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 4 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\04\\04_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 5 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\05\\05_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 5 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\05\\05_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 6 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\06\\06_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 6 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\06\\06_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 7 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\07\\07_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 7 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\07\\07_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 8 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\08\\08_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 8 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\08\\08_02.js",
+            "args": [],
+        }
+    ]
+}
