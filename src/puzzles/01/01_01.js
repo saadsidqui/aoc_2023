@@ -16,11 +16,11 @@ const data = fs.readFileSync(input_file, {
     flag: 'r'
 }).split("\n").filter(line => !isBlank(line));
 
-const digits = Array(10).fill(0).map((_, i) => String(i));
+const digits = new Set(Array(10).fill(0).map((_, i) => String(i)));
 let sum = 0;
 
 for (const line of data) {
-    const matches = line.split('').filter(char => digits.includes(char));
+    const matches = line.split('').filter(char => digits.has(char));
 
     if (matches.length < 1)
         throw new Error(`Expected at least one digit, found none in line "${line}"`);

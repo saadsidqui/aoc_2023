@@ -7,6 +7,16 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Current File",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${file}",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Day 1 Puzzle 1",
             "skipFiles": [
                 "<node_internals>/**"
@@ -182,6 +192,26 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\src\\puzzles\\09\\09_02.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 10 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\10\\10_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 10 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\10\\10_02.js",
             "args": [],
         }
     ]

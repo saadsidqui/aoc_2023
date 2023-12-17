@@ -16,7 +16,7 @@ const data = fs.readFileSync(input_file, {
     flag: 'r'
 }).split("\n").filter(line => !isBlank(line));
 
-const digits = Array(9).fill(0).map((_, i) => String(i + 1));
+const digits = new Set(Array(9).fill(0).map((_, i) => String(i + 1)));
 const spelled_digits = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
 ];
 
@@ -27,7 +27,7 @@ for (const line of data) {
 
     let buffer = '';
     line.toLocaleLowerCase().split('').forEach(chr => {
-        if (digits.includes(chr)) {
+        if (digits.has(chr)) {
             buffer = '';
             matches.push(chr);
             return;

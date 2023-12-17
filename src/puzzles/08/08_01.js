@@ -18,7 +18,7 @@ const start = 'AAA';
 const end = 'ZZZ';
 
 let instructions = [];
-const nodes = {};
+const nodes = new Map();
 
 fs.readFileSync(input_file, {
     encoding: 'utf-8',
@@ -35,7 +35,7 @@ fs.readFileSync(input_file, {
 
     if ((matches = re.node.exec(line)) === null)
         throw new Error(`Invalid node data "${line}"`);
-    nodes[matches[1]] = {L: matches[2], R: matches[3]};
+    nodes.set(matches[1], {L: matches[2], R: matches[3]});
 });
 
 let steps = 0;
@@ -45,7 +45,7 @@ let current = start;
 while (current !== end) {
     op_index = (++op_index == instructions.length) ? 0 : op_index;
     const op = instructions[op_index];
-    current = nodes[current][op];
+    current = nodes.get(current)[op];
     steps++;
 }
 

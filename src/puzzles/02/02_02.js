@@ -24,9 +24,8 @@ fs.readFileSync(input_file, {
     if (game_id === null)
         throw new Error(`Failed to parse game id "${game[0].substring(5)}"`);
 
-    const entry = {
-        id: game_id,
-    };
+    const entry = new Map();
+    entry.set('id', game_id);
 
     for (let group_id = 0; group_id < groups.length; group_id++) {
         const cubes = groups[group_id].split(',');
@@ -36,13 +35,10 @@ fs.readFileSync(input_file, {
             if (num === null)
                 throw new Error(`Failed to parse number "${colors[0]}" for color ${colors[1]}`);
 
-            if (!Object.hasOwn(entry, colors[1]))
-                entry[colors[1]] = {};
-            entry[colors[1]][group_id] = num;
-
-            if (!Object.hasOwn(entry, `${colors[1]}_max`))
-                entry[`${colors[1]}_max`] = 0;
-            entry[`${colors[1]}_max`] = Math.max(entry[`${colors[1]}_max`], num);
+            const max_key = `${colors[1]}_max`;
+            if (!entry.has(max_key))
+                entry.set(max_key, 0);
+            entry.set(max_key, Math.max(entry.get(max_key), num));
         }
     }
 
@@ -55,7 +51,7 @@ let sum = 0;
 
 for (const game of games) {
     const power = constraint_keys.reduce(
-        (accum, key) => accum *= game[`${key}_max`],
+        (accum, key) => accum *= game.get(`${key}_max`),
         1
     );
     sum += power;

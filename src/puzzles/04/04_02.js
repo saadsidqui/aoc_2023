@@ -24,7 +24,7 @@ fs.readFileSync(input_file, {
         match_count: 0,
         instances: 1,
         drawn: groups[0].split(' ').filter(n => !isBlank(n)).map(n => to_int(n)),
-        played: groups[1].split(' ').filter(n => !isBlank(n)).map(n => to_int(n))
+        played: groups[1].split(' ').filter(n => !isBlank(n)).map(n => to_int(n)),
     };
     cards.push(entry);
 });

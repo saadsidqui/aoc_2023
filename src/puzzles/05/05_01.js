@@ -12,7 +12,7 @@ log_info('Reading input ...');
 
 const chain = [];   // Assuming the data come in proper order.
 const seeds = [];
-const maps = {};
+const maps = new Map();
 const re = {
     seeds: /^seeds: ([\d ]+)$/i,
     seed_data: /([\d]+)/g,
@@ -43,13 +43,13 @@ fs.readFileSync(input_file, {
         }
 
         current_map_key = `${matches[1]}_${matches[2]}`;
-        if (!Object.hasOwn(maps, current_map_key))
-            maps[current_map_key] = [];
+        if (!maps.has(current_map_key))
+            maps.set(current_map_key, []);
 
     } else if ((matches = re.map_data.exec(line)) !== null) {
         if (current_map_key === null)
             throw new Error('Received map data before a map key has been set');
-        maps[current_map_key].push({
+        maps.get(current_map_key).push({
             src: to_int(matches[2]),
             dst: to_int(matches[1]),
             len: to_int(matches[3]),
@@ -79,7 +79,7 @@ for (const seed of seeds) {
 
         const key = `${last_link}_${link}`;
         last_link = link;
-        const range = find_range(val, maps[key]);
+        const range = find_range(val, maps.get(key));
         if (range !== false)
             val = (val - range.src) + range.dst;
     }

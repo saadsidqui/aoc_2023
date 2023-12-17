@@ -13,7 +13,7 @@ log_info('Reading input ...');
 const chain = [];   // Assuming the data come in proper order.
 const seeds = [];
 const seed_data = [];
-const maps = {};
+const maps = new Map();
 const re = {
     seeds: /^seeds: ([\d ]+)$/i,
     seed_data: /([\d]+)/g,
@@ -44,8 +44,8 @@ fs.readFileSync(input_file, {
             }
 
             current_map_key = `${matches[1]}_${matches[2]}`;
-            if (!Object.hasOwn(maps, current_map_key))
-                maps[current_map_key] = [];
+            if (!maps.has(current_map_key))
+                maps.set(current_map_key, []);
 
         } else if ((matches = re.map_data.exec(line)) !== null) {
             if (current_map_key === null)
@@ -54,7 +54,7 @@ fs.readFileSync(input_file, {
             matches = matches.map(m => to_int(m));
 
             const added = matches[3] - 1;
-            maps[current_map_key].push({
+            maps.get(current_map_key).push({
                 dst: matches[1],
                 dst_upper: matches[1] + added,
                 src: matches[2],
@@ -76,11 +76,8 @@ for (let i = 0; i < (seed_data.length / 2); i++) {
     });
 }
 
-for (const key in maps) {
-    if (Object.hasOwn(maps, key)) {
-        maps[key].sort((a, b) => a.src - b.src);
-    }
-}
+for (const [, translations] of maps)
+    translations.sort((a, b) => a.src - b.src)
 
 let lowest_location = null;
 for (let seed of seeds) {
@@ -96,13 +93,14 @@ for (let seed of seeds) {
 
         const new_ranges = [];
         for (const range of seed.ranges) {
-            for (const trans of maps[key]) {
+            const translations = maps.get(key);
+            for (const trans of translations) {
                 if ((trans.src > range.upper) || (range.lower > trans.src_upper)) {
                     // No intersection at all [A];
                     // if seed range is higher than the translation range, it may still
                     // intersect one of the remaining translation ranges
                     // unless this is the last translation range
-                    if (maps[key][maps[key].length - 1] !== trans) {
+                    if (translations[translations.length - 1] !== trans) {
                         if (range.lower > trans.src_upper)
                             continue;
                     }

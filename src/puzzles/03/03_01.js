@@ -15,13 +15,13 @@ const matrix = fs.readFileSync(input_file, {
     flag: 'r'
 }).split("\n").filter(line => !isBlank(line)).map(line => line.split(''));
 
-const digits = Array(10).fill(0).map((_, i) => String(i));
-const ignore = ['.'];
+const digits = new Set(Array(10).fill(0).map((_, i) => String(i)));
+const ignore = new Set(['.']);
 let sum = 0;
 let numbers = [];
 let current_number = null;
 
-const is_symbol = (char) => !(digits.includes(char) || ignore.includes(char));
+const is_symbol = (char) => !(digits.has(char) || ignore.has(char));
 
 const finalize_current_number = (x_max, y_max) => {
     if (current_number === null)
@@ -54,7 +54,7 @@ for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < row.length; x++) {
         const char = row[x];
 
-        if (ignore.includes(char) || !digits.includes(char)) {
+        if (ignore.has(char) || !digits.has(char)) {
             finalize_current_number(row.length - 1, matrix.length - 1);
         } else {
             if (current_number === null) {

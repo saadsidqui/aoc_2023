@@ -15,12 +15,12 @@ const matrix = fs.readFileSync(input_file, {
     flag: 'r'
 }).split("\n").filter(line => !isBlank(line)).map(line => line.split(''));
 
-const digits = Array(10).fill(0).map((_, i) => String(i));
-const ignore = ['.'];
-const gear_symbols = ['*'];
+const digits = new Set(Array(10).fill(0).map((_, i) => String(i)));
+const ignore = new Set(['.']);
+const gear_symbols = new Set(['*']);
 
 let numbers = [];
-let gears = {};
+let gears = new Map();
 let current_number = null;
 
 const finalize_current_number = (x_max, y_max) => {
@@ -39,17 +39,17 @@ const finalize_current_number = (x_max, y_max) => {
                     continue;
 
                 const char = matrix[y][x];
-                if (gear_symbols.includes(char)) {
+                if (gear_symbols.has(char)) {
                     const key = `${x}_${y}`;
-                    if (!Object.hasOwn(gears, key)) {
-                        gears[key] = {
+                    if (!gears.has(key)) {
+                        gears.set(key, {
                             value: char,
                             x: x,
                             y: y,
                             numbers: [],
-                        };
+                        });
                     }
-                    gears[key].numbers.push(current_number.value);
+                    gears.get(key).numbers.push(current_number.value);
                 }
             }
         }
@@ -64,7 +64,7 @@ for (let y = 0; y < matrix.length; y++) {
     for (let x = 0; x < row.length; x++) {
         const char = row[x];
 
-        if (ignore.includes(char) || !digits.includes(char)) {
+        if (ignore.has(char) || !digits.has(char)) {
             finalize_current_number(row.length - 1, matrix.length - 1);
         } else {
             if (current_number === null) {
@@ -85,14 +85,10 @@ for (let y = 0; y < matrix.length; y++) {
 
 
 let sum = 0;
-for (const key in gears) {
-    if (Object.hasOwn(gears, key)) {
-        const gear = gears[key];
-        if (gear.numbers.length != 2)
-            continue;
-
-        sum += gear.numbers[0] * gear.numbers[1];
-    }
+for (const [, gear] of gears) {
+    if (gear.numbers.length != 2)
+        continue;
+    sum += gear.numbers[0] * gear.numbers[1];
 }
 
 log_success(`Done. The sum of all of the gear ratios in the engine schematic is ${sum}`);

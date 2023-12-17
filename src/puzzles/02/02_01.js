@@ -24,9 +24,8 @@ fs.readFileSync(input_file, {
     if (game_id === null)
         throw new Error(`Failed to parse game id "${game[0].substring(5)}"`);
 
-    const entry = {
-        id: game_id,
-    };
+    const entry = new Map();
+    entry.set('id', game_id);
 
     for (let group_id = 0; group_id < groups.length; group_id++) {
         const cubes = groups[group_id].split(',');
@@ -36,34 +35,30 @@ fs.readFileSync(input_file, {
             if (num === null)
                 throw new Error(`Failed to parse number "${colors[0]}" for color ${colors[1]}`);
 
-            if (!Object.hasOwn(entry, colors[1]))
-                entry[colors[1]] = {};
-            entry[colors[1]][group_id] = num;
-
-            if (!Object.hasOwn(entry, `${colors[1]}_max`))
-                entry[`${colors[1]}_max`] = 0;
-            entry[`${colors[1]}_max`] = Math.max(entry[`${colors[1]}_max`], num);
+            const max_key = `${colors[1]}_max`;
+            if (!entry.has(max_key))
+                entry.set(max_key, 0);
+            entry.set(max_key, Math.max(entry.get(max_key), num));
         }
     }
 
     games.push(entry);
 });
 
-const constraint = {
-    red: 12,
-    green: 13,
-    blue: 14,
-};
+const constraint = new Map([
+    ['red', 12],
+    ['green', 13],
+    ['blue', 14],
+]);
 
 let sum = 0;
 
-for (const game of games) {
-    const game_is_possible = Object.keys(constraint).every(
-        key => game[`${key}_max`] <= constraint[key]
-    );
-    if (!game_is_possible)
-        continue;
-    sum += game.id;
+outer: for (const game of games) {
+    for (const [key, val] of constraint) {
+        if (game.get(`${key}_max`) > val)
+            continue outer;
+    }
+    sum += game.get('id');
 }
 
 log_success(`Done. The sum of the possible games' IDs is ${sum}`);
