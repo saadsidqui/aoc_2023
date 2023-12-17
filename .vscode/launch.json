@@ -213,6 +213,26 @@
             ],
             "program": "${workspaceFolder}\\src\\puzzles\\10\\10_02.js",
             "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 11 Puzzle 1",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\11\\11_01.js",
+            "args": [],
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Day 11 Puzzle 2",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\src\\puzzles\\11\\11_02.js",
+            "args": [],
         }
     ]
 }

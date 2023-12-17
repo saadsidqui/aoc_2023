@@ -227,4 +227,4 @@ for (let y = search.y_min; y <= search.y_max; y++) {
     }
 }
 
-log_success(`Done. The number tiles are enclosed by the loop is ${tile_count}.`);
+log_success(`Done. The number of tiles are enclosed by the loop is ${tile_count}.`);
