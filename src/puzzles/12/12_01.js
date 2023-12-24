@@ -54,7 +54,7 @@ const recurse = (springs, sizes) => {
     const key = `${springs}_${sizes.join()}`;
 
     if (cache.has(key)) {
-        result = cache.get(key);
+        return cache.get(key);
     } else if (springs.length < 1) {
         result = ((sizes.length < 1) ? 1 : 0)
     } else if (sizes.length < 1) {
